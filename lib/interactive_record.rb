@@ -6,7 +6,10 @@ class InteractiveRecord
   attr_accessor :name, :grade
   attr_reader :id
   
-  def initialize
+  def initialize(options={})
+    options.each do |property, value|
+      self.send("#{property}=", value)
+    end
   end
   
   def self.table_name
