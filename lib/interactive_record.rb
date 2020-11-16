@@ -3,8 +3,6 @@ require 'active_support/inflector'
 #require 'pry'
 
 class InteractiveRecord
-  attr_accessor :name, :grade
-  attr_reader :id
   
   def initialize(options={})
     options.each do |property, value|
