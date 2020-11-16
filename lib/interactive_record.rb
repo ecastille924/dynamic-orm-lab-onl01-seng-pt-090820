@@ -1,6 +1,6 @@
 require_relative "../config/environment.rb"
 require 'active_support/inflector'
-require 'pry'
+#require 'pry'
 
 class InteractiveRecord
   
@@ -19,7 +19,6 @@ class InteractiveRecord
       column_names << row["name"]
     end
     column_names.compact
-    binding.pry
   end
   
 end
