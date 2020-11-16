@@ -4,11 +4,6 @@ require 'active_support/inflector'
 
 class InteractiveRecord
   
-  def initialize(options={})
-    options.each do |property, value|
-      self.send("#{property}=", value)
-    end
-  end
   
   def self.table_name
     self.to_s.downcase.pluralize
@@ -17,7 +12,7 @@ class InteractiveRecord
   def self.column_names
     DB[:conn].results_as_hash = true
 
-    sql = "pragma table_info('#{table_name}')"
+    sql = "PRAGMA table_info('#{table_name}')"
 
     table_info = DB[:conn].execute(sql)
     column_names = []
@@ -25,6 +20,12 @@ class InteractiveRecord
       column_names << row["name"]
     end
     column_names.compact
+  end
+  
+   def initialize(options={})
+    options.each do |property, value|
+      self.send("#{property}=", value)
+    end
   end
   
 end
