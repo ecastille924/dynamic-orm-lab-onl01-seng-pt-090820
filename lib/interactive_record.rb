@@ -50,7 +50,7 @@ class InteractiveRecord
     VALUES #{values_for_insert}
     SQL
     DB[:connection].execute(sql)
-    @id = DB[:connection].execute("SELECT last_insert_rowid() FROM #{table_name_for_insert}")
+    @id = DB[:connection].execute("SELECT last_insert_rowid() FROM #{table_name_for_insert}")[0][0]
   end
   
 end
